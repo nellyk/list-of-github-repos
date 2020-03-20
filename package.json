@@ -1,0 +1,60 @@
+{
+  "name": "list-of-github-repos",
+  "version": "1.0.0",
+  "description": "",
+  "contributors": [],
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "bundle-module",
+    "watch:build": "npm run build -- --watch",
+    "clean": "rimraf build",
+    "prepare": "npm run build",
+    "test:lint": "eslint --ignore-path .gitignore --ext js,jsx,snap .",
+    "test:unit": "jest",
+    "test": "npm run test:lint && npm run test:unit"
+  },
+  "dependencies": {
+    "@americanexpress/one-app-ducks": "^4.0.0",
+    "@americanexpress/one-app-router": "^1.0.0",
+    "holocron": "^1.0.0",
+    "iguazu": "^3.0.2",
+    "iguazu-holocron": "^1.0.0",
+    "iguazu-rest": "^1.8.0",
+    "immutable": "^3.8.2",
+    "prop-types": "^15.5.9",
+    "react": "^16.12.0",
+    "react-intl": "^3.6.0",
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.4"
+  },
+  "devDependencies": {
+    "@americanexpress/one-app-bundler": "^6.0.0",
+    "amex-jest-preset-react": "^6.0.0",
+    "babel-eslint": "^8.2.6",
+    "babel-preset-amex": "^3.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.4.4",
+    "eslint": "^6.8.0",
+    "eslint-config-amex": "^11.1.0",
+    "jest": "^25.1.0",
+    "rimraf": "^3.0.0",
+    "glob": "^7.1.6",
+    "@babel/polyfill": "^7.8.3",
+    "jest-json-schema": "^2.1.0",
+    "parrot-middleware": "^3.1.0"
+  },
+  "jest": {
+    "preset": "amex-jest-preset-react",
+    "setupFilesAfterEnv": [
+      "./test-setup.js"
+    ]
+  },
+  "one-amex": {
+    "bundler": {
+      "externals": "react-intl"
+    },
+    "runner": {
+      "parrotMiddleware": "./dev.middleware.js"
+    }
+  }
+}
